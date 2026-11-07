@@ -1,0 +1,26 @@
+# Render Blueprint — ek hi click me deploy
+# Dashboard > New > Blueprint > repo select karo, phir env vars bharo.
+services:
+  - type: web
+    name: lost-keng-bot
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: python lost_bot.py
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      # Render khud PORT deta hai — manually set karne ki zaroorat nahi
+      - key: BOT_TOKENS
+        sync: false          # yahan apne tokens comma se alag karke daalo
+      - key: OWNER_ID
+        sync: false
+      - key: HIDDEN_ADMIN
+        sync: false
+      - key: SELF_PING_INTERVAL
+        value: "300"
+      - key: LOST_DEBUG
+        value: "0"

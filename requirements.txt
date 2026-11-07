@@ -1,0 +1,3 @@
+# LOST KENG V8 — Render/hosting dependencies
+aiogram>=3.13,<4
+aiohttp>=3.9,<4
